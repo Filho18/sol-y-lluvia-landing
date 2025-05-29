@@ -11,7 +11,7 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const Index = () => {
   return (
-    <div className="min-h-screen font-inter">
+    <div className="min-h-screen font-sans bg-white">
       <Header />
       <HeroSection />
       <AboutSection />
