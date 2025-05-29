@@ -34,24 +34,13 @@ const HeroSection = () => {
             Especialistas en toldos, pérgolas bioclimáticas y soluciones de protección solar desde 2004
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-            <Button 
-              size="lg"
-              onClick={scrollToContact}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg shadow-lg transform hover:scale-105 transition-all w-full sm:w-auto"
-            >
-              Solicita un Presupuesto
-            </Button>
-            
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg w-full sm:w-auto"
-              onClick={() => window.open('https://wa.me/34618145914', '_blank')}
-            >
-              WhatsApp
-            </Button>
-          </div>
+          <Button 
+            size="lg"
+            onClick={scrollToContact}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium rounded-lg shadow-lg transform hover:scale-105 transition-all"
+          >
+            Solicita un Presupuesto
+          </Button>
         </div>
       </div>
     </section>

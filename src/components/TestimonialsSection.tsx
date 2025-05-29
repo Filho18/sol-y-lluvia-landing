@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -20,40 +21,66 @@ const TestimonialsSection = () => {
       location: "Vigo",
       text: "Las cortinas de vidrio son hermosas y muy funcionales. Superaron nuestras expectativas.",
       rating: 5
+    },
+    {
+      name: "Carlos Fernández",
+      location: "Pontevedra",
+      text: "Profesionales de confianza. El toldo cofre lleva dos años funcionando perfectamente.",
+      rating: 5
+    },
+    {
+      name: "Elena Martín",
+      location: "Lugo",
+      text: "Las velas tensionadas han dado un toque moderno y elegante a nuestro jardín.",
+      rating: 5
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 lg:py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-            Lo que Dicen Nuestros Clientes
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
+            O Que Dizem Nossos Clientes
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-xl p-8 shadow-md text-center">
-              {/* Stars */}
-              <div className="flex justify-center mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-amber-400 text-lg">★</span>
-                ))}
-              </div>
-              
-              {/* Quote */}
-              <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                "{testimonial.text}"
-              </blockquote>
-              
-              {/* Author */}
-              <div>
-                <h4 className="font-semibold text-gray-900 text-lg">{testimonial.name}</h4>
-                <p className="text-gray-500">{testimonial.location}</p>
-              </div>
-            </div>
-          ))}
+        <div className="max-w-5xl mx-auto">
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: false,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-white rounded-xl p-6 lg:p-8 shadow-sm h-full flex flex-col">
+                    {/* Stars */}
+                    <div className="flex justify-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-amber-400 text-lg">★</span>
+                      ))}
+                    </div>
+                    
+                    {/* Quote */}
+                    <blockquote className="text-gray-700 text-center leading-relaxed mb-6 italic flex-grow">
+                      "{testimonial.text}"
+                    </blockquote>
+                    
+                    {/* Author */}
+                    <div className="text-center">
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-gray-500 text-sm">{testimonial.location}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </div>
     </section>
