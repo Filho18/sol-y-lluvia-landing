@@ -56,7 +56,7 @@ const Header = () => {
               onClick={() => scrollToSection('contacto')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6"
             >
-              Pedir Presupuesto
+              Solicita Presupuesto
             </Button>
           </nav>
 
@@ -105,7 +105,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contacto')}
                 className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-2"
               >
-                Pedir Presupuesto
+                Solicita Presupuesto
               </Button>
             </div>
           </nav>

@@ -1,33 +1,58 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
-
-const services = [
-  {
-    title: 'Toldos',
-    description: 'Amplia gama de toldos para terrazas, balcones y ventanas. Protección solar con estilo y durabilidad.',
-    image: 'https://i.imgur.com/0BjV0Ox.jpeg',
-  },
-  {
-    title: 'Pérgolas Bioclimáticas',
-    description: 'Crea espacios exteriores confortables y adaptables a cualquier clima con nuestras pérgolas bioclimáticas de diseño moderno.',
-    image: 'https://i.imgur.com/o2MZT8H.jpeg',
-  },
-  {
-    title: 'Cortinas de Cristal',
-    description: 'Disfruta de vistas panorámicas sin renunciar a la protección contra el viento y la lluvia con nuestras cortinas de cristal a medida.',
-    image: 'https://i.imgur.com/14wfFZF.jpeg',
-  },
-  {
-    title: 'Estores',
-    description: 'Controla la luz y la privacidad en tus interiores con nuestra selección de estores enrollables, plegables y venecianos.',
-    image: 'https://i.imgur.com/VdrL40I.jpeg',
-  },
-];
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const ServicesSection = () => {
   const [selectedService, setSelectedService] = useState(0);
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+
+  const services = [
+    {
+      name: "Toldo Brazo Extensible",
+      image: "https://i.imgur.com/b8Ff3jn.jpeg",
+      description: "Protección solar retráctil para terrazas y patios. Sistema robusto y duradero que se adapta perfectamente a cualquier espacio exterior, ofreciendo sombra cuando la necesites."
+    },
+    {
+      name: "Toldo Cofre",
+      image: "https://i.imgur.com/3MST0ep.jpeg",
+      description: "Toldo protegido en cofre para mayor durabilidad. El sistema de protección total garantiza una vida útil prolongada y un aspecto impecable durante años."
+    },
+    {
+      name: "Pérgola Bioclimática",
+      image: "https://i.imgur.com/iUieITm.jpeg",
+      description: "Control total del ambiente exterior con lamas orientables. Disfruta de tu terraza en cualquier condición climática con la máxima comodidad y estilo."
+    },
+    {
+      name: "Pérgola Retráctil",
+      image: "https://i.imgur.com/R6xHB6F.jpeg",
+      description: "Pérgola con cubierta retráctil ajustable según tus necesidades. Flexibilidad total para adaptarse a cualquier momento del día y condición meteorológica."
+    },
+    {
+      name: "Toldo Vertical",
+      image: "https://i.imgur.com/XdR1xph.jpeg",
+      description: "Protección vertical contra viento y sol lateral. Ideal para crear espacios más íntimos y protegidos en terrazas, balcones y jardines."
+    },
+    {
+      name: "Toldo Vertical Screen Zíper",
+      image: "https://i.imgur.com/E3Rbd3Z.jpeg",
+      description: "Sistema de cremallera para máxima estabilidad y tensión. La tecnología más avanzada en protección solar vertical con acabados premium."
+    },
+    {
+      name: "Cortinas de Vidrio",
+      image: "https://i.imgur.com/cJSOtDG.jpeg",
+      description: "Cerramiento transparente y elegante sin perfiles verticales. Transforma tu terraza en un espacio utilizable todo el año manteniendo las vistas."
+    },
+    {
+      name: "Estores de Rolo",
+      image: "https://i.imgur.com/lb7Aayr.jpeg",
+      description: "Control preciso de la luminosidad interior con diseño minimalista. Perfectos para ventanas y espacios interiores que requieren privacidad y control solar."
+    },
+    {
+      name: "Velas Tensionadas",
+      image: "https://i.imgur.com/bRW11Kg.jpeg",
+      description: "Protección solar moderna y decorativa con formas geométricas. Aporta un toque contemporáneo y artístico a cualquier espacio exterior."
+    }
+  ];
 
   const scrollToContact = () => {
     const element = document.getElementById('contacto');
@@ -37,104 +62,99 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="servicios" className="py-16 lg:py-20 bg-gray-50">
+    <section id="servicios" className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
             Nuestros Servicios
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Soluciones profesionales de protección solar y confort exterior adaptadas a tus necesidades
+            Soluciones completas de protección solar con diseño moderno y calidad premium
           </p>
         </div>
 
-        {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 max-w-6xl mx-auto">
-          {/* Left Column - Service Info */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                {services[selectedService].title}
+        {/* Desktop Version */}
+        <div className="hidden lg:block">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Left Column - Service Info */}
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl xl:text-3xl font-semibold mb-6 text-gray-900">
+                {services[selectedService].name}
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 {services[selectedService].description}
               </p>
               <Button 
                 onClick={scrollToContact}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold w-fit"
               >
-                Pedir Presupuesto
+                Pedir Orçamento
               </Button>
             </div>
-          </div>
 
-          {/* Right Column - Image with Service Buttons */}
-          <div className="relative">
-            <div 
-              className="aspect-[4/3] rounded-2xl bg-cover bg-center overflow-hidden"
-              style={{
-                backgroundImage: `url('${services[selectedService].image}')`,
-              }}
-            >
-              {/* Service Selection Buttons Overlay */}
-              <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-6">
-                <div className="grid grid-cols-2 gap-2">
-                  {services.map((service, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedService(index)}
-                      className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                        selectedService === index
-                          ? 'bg-blue-600 text-white shadow-lg'
-                          : 'bg-white/90 text-gray-900 hover:bg-white'
-                      }`}
-                    >
-                      {service.title}
-                    </button>
-                  ))}
+            {/* Right Column - Interactive Image */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-xl">
+                <img 
+                  src={services[selectedService].image} 
+                  alt={services[selectedService].name}
+                  className="w-full h-96 object-cover transition-all duration-500"
+                />
+                
+                {/* Service Buttons Overlay */}
+                <div className="absolute inset-0 bg-black/20">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="grid grid-cols-3 gap-2">
+                      {services.map((service, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedService(index)}
+                          className={`p-2 text-xs font-medium rounded transition-all ${
+                            selectedService === index 
+                              ? 'bg-blue-600 text-white' 
+                              : 'bg-white/90 text-gray-800 hover:bg-white'
+                          }`}
+                        >
+                          {service.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Mobile Layout - Accordion */}
-        <div className="lg:hidden space-y-4 max-w-2xl mx-auto">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-sm overflow-hidden">
-              <button
-                onClick={() => setOpenAccordion(openAccordion === index ? null : index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between"
-              >
-                <span className="font-semibold text-gray-900">{service.title}</span>
-                <ChevronDown 
-                  className={`w-5 h-5 text-gray-500 transition-transform ${
-                    openAccordion === index ? 'rotate-180' : ''
-                  }`} 
-                />
-              </button>
-              
-              {openAccordion === index && (
-                <div className="px-6 pb-6 animate-fade-in">
-                  <div 
-                    className="aspect-[16/9] rounded-lg bg-cover bg-center mb-4"
-                    style={{
-                      backgroundImage: `url('${service.image}')`,
-                    }}
-                  />
-                  <p className="text-gray-600 mb-4">
-                    {service.description}
-                  </p>
-                  <Button 
-                    onClick={scrollToContact}
-                    className="bg-blue-600 hover:bg-blue-700 text-white w-full"
-                  >
-                    Pedir Presupuesto
-                  </Button>
-                </div>
-              )}
-            </div>
-          ))}
+        {/* Mobile Version - Accordion */}
+        <div className="lg:hidden">
+          <Accordion type="single" collapsible className="space-y-4">
+            {services.map((service, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-xl overflow-hidden">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">{service.name}</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                  <div className="space-y-4">
+                    <img 
+                      src={service.image} 
+                      alt={service.name}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <Button 
+                      onClick={scrollToContact}
+                      className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 font-semibold"
+                    >
+                      Pedir Orçamento
+                    </Button>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
