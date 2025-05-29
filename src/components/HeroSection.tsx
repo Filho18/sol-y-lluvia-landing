@@ -16,29 +16,29 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=3857&auto=format&fit=crop')`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imgur.com/iUieITm.jpeg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
       
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 text-center text-white">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-light mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light mb-4 sm:mb-6 leading-tight">
             Transforma tus espacios exteriores
             <span className="block text-amber-400 font-medium">con Sol y Lluvia</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-10 text-gray-100 max-w-2xl mx-auto font-light">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 text-gray-100 max-w-2xl mx-auto font-light">
             Especialistas en toldos, pérgolas bioclimáticas y soluciones de protección solar desde 2004
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
             <Button 
               size="lg"
               onClick={scrollToContact}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium rounded-lg shadow-lg transform hover:scale-105 transition-all"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg shadow-lg transform hover:scale-105 transition-all w-full sm:w-auto"
             >
               Solicita un Presupuesto
             </Button>
@@ -46,7 +46,7 @@ const HeroSection = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-medium rounded-lg"
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-lg w-full sm:w-auto"
               onClick={() => window.open('https://wa.me/34618145914', '_blank')}
             >
               WhatsApp

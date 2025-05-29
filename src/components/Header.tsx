@@ -15,14 +15,15 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-amber-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">S&L</span>
-            </div>
-            <span className="text-xl font-semibold text-gray-900">Sol y Lluvia</span>
+            <img 
+              src="https://solylluvia.es/images/logotipo.png" 
+              alt="Sol y Lluvia"
+              className="h-10 sm:h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}

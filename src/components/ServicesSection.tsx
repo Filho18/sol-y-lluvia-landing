@@ -5,47 +5,47 @@ const ServicesSection = () => {
   const services = [
     {
       name: "Toldo Brazo Extensible",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2965&auto=format&fit=crop",
+      image: "https://i.imgur.com/b8Ff3jn.jpeg",
       description: "Protección solar retráctil para terrazas y patios"
     },
     {
       name: "Toldo Cofre",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2940&auto=format&fit=crop",
+      image: "https://i.imgur.com/3MST0ep.jpeg",
       description: "Toldo protegido en cofre para mayor durabilidad"
     },
     {
       name: "Pérgola Bioclimática",
-      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?q=80&w=3857&auto=format&fit=crop",
+      image: "https://i.imgur.com/iUieITm.jpeg",
       description: "Control total del ambiente exterior"
     },
     {
       name: "Pérgola Retráctil",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2952&auto=format&fit=crop",
+      image: "https://i.imgur.com/R6xHB6F.jpeg",
       description: "Pérgola con cubierta retráctil ajustable"
     },
     {
       name: "Toldo Vertical",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=2940&auto=format&fit=crop",
+      image: "https://i.imgur.com/XdR1xph.jpeg",
       description: "Protección vertical contra viento y sol"
     },
     {
       name: "Toldo Vertical Screen Zíper",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2940&auto=format&fit=crop",
+      image: "https://i.imgur.com/E3Rbd3Z.jpeg",
       description: "Sistema de cremallera para máxima estabilidad"
     },
     {
       name: "Cortinas de Vidrio",
-      image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?q=80&w=4480&auto=format&fit=crop",
+      image: "https://i.imgur.com/cJSOtDG.jpeg",
       description: "Cerramiento transparente y elegante"
     },
     {
       name: "Estores de Rolo",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?q=80&w=3011&auto=format&fit=crop",
+      image: "https://i.imgur.com/lb7Aayr.jpeg",
       description: "Control preciso de la luminosidad interior"
     },
     {
       name: "Velas Tensionadas",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2965&auto=format&fit=crop",
+      image: "https://i.imgur.com/bRW11Kg.jpeg",
       description: "Protección solar moderna y decorativa"
     }
   ];
