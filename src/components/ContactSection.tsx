@@ -1,43 +1,54 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
+import { Textarea } from '@/components/ui/textarea';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    telefono: '',
     mensaje: ''
   });
   const [showContactInfo, setShowContactInfo] = useState(false);
-  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage('');
     
-    // Create WhatsApp message
-    const message = Hola! Me gustaría solicitar un presupuesto:
-Nombre: ${formData.nombre}
-Email: ${formData.email}
-Teléfono: ${formData.telefono}
-Mensaje: ${formData.mensaje};
-    
-    const whatsappUrl = https://wa.me/34618145914?text=${encodeURIComponent(message)};
-    window.open(whatsappUrl, '_blank');
-    
-    toast({
-      title: "Redirigiendo a WhatsApp",
-      description: "Tu mensaje será enviado vía WhatsApp.",
-    });
-    
-    // Reset form
-    setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('nombre', formData.nombre);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('mensaje', formData.mensaje);
+
+      const response = await fetch('https://formspree.io/f/xeogyygp', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formDataToSend
+      });
+
+      if (response.ok) {
+        window.location.href = 'https://solylluviagraias.netlify.app/';
+      } else {
+        setErrorMessage('Error al enviar. Inténtalo de nuevo.');
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      setErrorMessage('Error al enviar. Inténtalo de nuevo.');
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMessage) setErrorMessage('');
   };
 
   return (
@@ -59,78 +70,72 @@ Mensaje: ${formData.mensaje};
               Solicita tu presupuesto sin compromiso
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre *
-                </label>
-                <Input
-                  id="nombre"
-                  name="nombre"
-                  type="text"
-                  value={formData.nombre}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                  placeholder="Tu nombre completo"
-                />
+            <div onSubmit={handleSubmit}>
+              <div className="space-y-6">
+                <div>
+                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nombre completo *
+                  </label>
+                  <Input
+                    id="nombre"
+                    name="nombre"
+                    type="text"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    required
+                    className="w-full"
+                    placeholder="Tu nombre completo"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Correo electrónico *
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-2">
+                    Mensaje *
+                  </label>
+                  <Textarea
+                    id="mensaje"
+                    name="mensaje"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full"
+                    placeholder="Describe tu proyecto o necesidad..."
+                  />
+                </div>
+                
+                {errorMessage && (
+                  <div className="text-red-600 text-sm text-center">
+                    {errorMessage}
+                  </div>
+                )}
+                
+                <Button 
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                </Button>
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                  placeholder="tu@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="telefono" className="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono *
-                </label>
-                <Input
-                  id="telefono"
-                  name="telefono"
-                  type="tel"
-                  value={formData.telefono}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                  placeholder="+34 000 000 000"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje *
-                </label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  value={formData.mensaje}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                  placeholder="Describe tu proyecto o necesidad..."
-                />
-              </div>
-              
-              <Button 
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold"
-              >
-                Enviar Solicitud
-              </Button>
-            </form>
+            </div>
           </div>
 
           {/* Collapsible Contact Information */}
@@ -178,7 +183,7 @@ Mensaje: ${formData.mensaje};
 
                   <div className="text-center md:text-left">
                     <h4 className="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
-                      <span className="mr-2">🕒</span> Horários
+                      <span className="mr-2">🕒</span> Horarios
                     </h4>
                     <p className="text-gray-600 text-sm">
                       Lunes a Viernes: 9:00 – 18:00<br />
@@ -186,16 +191,6 @@ Mensaje: ${formData.mensaje};
                       Domingos: Cerrado
                     </p>
                   </div>
-                </div>
-
-                {/* WhatsApp CTA */}
-                <div className="pt-4 border-t border-gray-200">
-                  <Button 
-                    onClick={() => window.open('https://wa.me/34618145914', '_blank')}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
-                  >
-                    💬 Abrir WhatsApp
-                  </Button>
                 </div>
               </div>
             )}
@@ -206,4 +201,4 @@ Mensaje: ${formData.mensaje};
   );
 };
 
-export default ContactSection
+export default ContactSection;
