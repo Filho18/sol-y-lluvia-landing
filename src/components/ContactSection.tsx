@@ -9,6 +9,8 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
+    telefono: '',
+    asunto: '',
     mensaje: ''
   });
   const [showContactInfo, setShowContactInfo] = useState(false);
@@ -23,6 +25,8 @@ const ContactSection = () => {
       const formDataObj = new FormData();
       formDataObj.append('nombre', formData.nombre);
       formDataObj.append('email', formData.email);
+      formDataObj.append('telefono', formData.telefono);
+      formDataObj.append('asunto', formData.asunto);
       formDataObj.append('mensaje', formData.mensaje);
       
       const response = await fetch('https://formspree.io/f/xeogyygp', {
@@ -101,6 +105,38 @@ const ContactSection = () => {
                   required
                   className="w-full"
                   placeholder="tu@email.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="telefono" className="block text-sm font-medium text-gray-700 mb-2">
+                  Número de teléfono *
+                </label>
+                <Input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  required
+                  className="w-full"
+                  placeholder="+34 123 456 789"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="asunto" className="block text-sm font-medium text-gray-700 mb-2">
+                  Asunto *
+                </label>
+                <Input
+                  id="asunto"
+                  name="asunto"
+                  type="text"
+                  value={formData.asunto}
+                  onChange={handleChange}
+                  required
+                  className="w-full"
+                  placeholder="Motivo de tu consulta"
                 />
               </div>
               
