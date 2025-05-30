@@ -62,7 +62,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="servicios" className="py-16 lg:py-20 bg-gray-50">
+    <section id="servicios" className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
@@ -73,54 +73,55 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Desktop Version - New Layout */}
+        {/* Desktop Version */}
         <div className="hidden lg:block">
-          <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
-            {/* Left Column - Image */}
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <img 
-                  src={services[selectedService].image} 
-                  alt={services[selectedService].name}
-                  className="w-full h-[500px] object-cover transition-all duration-500"
-                />
-              </div>
-            </div>
-
-            {/* Right Column - Service Info */}
-            <div className="flex flex-col justify-center space-y-8">
-              <div>
-                <h3 className="text-4xl font-bold mb-6 text-gray-900 leading-tight">
-                  {services[selectedService].name}
-                </h3>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  {services[selectedService].description}
-                </p>
-              </div>
-              
-              {/* Service Selection Buttons */}
-              <div className="space-y-3">
-                {services.map((service, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedService(index)}
-                    className={`w-full text-left p-4 rounded-lg transition-all duration-300 ${
-                      selectedService === index 
-                        ? 'bg-blue-600 text-white shadow-lg' 
-                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                    }`}
-                  >
-                    <span className="font-semibold">{service.name}</span>
-                  </button>
-                ))}
-              </div>
-
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Left Column - Service Info */}
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl xl:text-3xl font-semibold mb-6 text-gray-900">
+                {services[selectedService].name}
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                {services[selectedService].description}
+              </p>
               <Button 
                 onClick={scrollToContact}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold w-fit mt-8"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold w-fit"
               >
                 Pedir Presupuesto
               </Button>
+            </div>
+
+            {/* Right Column - Interactive Image */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-xl">
+                <img 
+                  src={services[selectedService].image} 
+                  alt={services[selectedService].name}
+                  className="w-full h-96 object-cover transition-all duration-500"
+                />
+                
+                {/* Service Buttons Overlay */}
+                <div className="absolute inset-0 bg-black/20">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="grid grid-cols-3 gap-2">
+                      {services.map((service, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedService(index)}
+                          className={`p-2 text-xs font-medium rounded transition-all ${
+                            selectedService === index 
+                              ? 'bg-blue-600 text-white' 
+                              : 'bg-white/90 text-gray-800 hover:bg-white'
+                          }`}
+                        >
+                          {service.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -129,7 +130,7 @@ const ServicesSection = () => {
         <div className="lg:hidden">
           <Accordion type="single" collapsible className="space-y-4">
             {services.map((service, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-xl overflow-hidden">
                 <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
                   <span className="font-semibold text-gray-900">{service.name}</span>
                 </AccordionTrigger>
