@@ -9,7 +9,7 @@ const AboutSection = () => {
           {/* Image */}
           <div className="order-2 lg:order-1">
             <img 
-              src="/https://i.imgur.com/i3SS4lq.jpeg"
+              src="https://i.imgur.com/i3SS4lq.jpeg"
               alt="Instalación de pérgolas y toldos"
               className="w-full h-auto rounded-lg shadow-lg"
             />
