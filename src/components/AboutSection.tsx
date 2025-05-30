@@ -9,7 +9,7 @@ const AboutSection = () => {
           {/* Image */}
           <div className="order-2 lg:order-1">
             <img 
-              src="/lovable-uploads/6ed9c4cd-4872-4ef2-a4e4-95e21013902e.png"
+              src="/https://www.llaza.com/wp-content/uploads/2024/05/Majestic-Rooftop-min-scaled-1-1536x864.jpg"
               alt="Instalación de pérgolas y toldos"
               className="w-full h-auto rounded-lg shadow-lg"
             />
