@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,32 +9,43 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    telefono: '',
     mensaje: ''
   });
   const [showContactInfo, setShowContactInfo] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Create WhatsApp message
-    const message = Hola! Me gustaría solicitar un presupuesto:
-Nombre: ${formData.nombre}
-Email: ${formData.email}
-Teléfono: ${formData.telefono}
-Mensaje: ${formData.mensaje};
-    
-    const whatsappUrl = https://wa.me/34618145914?text=${encodeURIComponent(message)};
-    window.open(whatsappUrl, '_blank');
-    
-    toast({
-      title: "Redirigiendo a WhatsApp",
-      description: "Tu mensaje será enviado vía WhatsApp.",
-    });
-    
-    // Reset form
-    setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append('nombre', formData.nombre);
+      formDataObj.append('email', formData.email);
+      formDataObj.append('mensaje', formData.mensaje);
+      
+      const response = await fetch('https://formspree.io/f/xeogyygp', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formDataObj
+      });
+      
+      if (response.ok) {
+        window.location.href = 'https://solylluviagraias.netlify.app/';
+      } else {
+        throw new Error('Error en el envío');
+      }
+    } catch (error) {
+      toast({
+        title: "Error al enviar. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,10 +71,10 @@ Mensaje: ${formData.mensaje};
               Solicita tu presupuesto sin compromiso
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre *
+                  Nombre completo *
                 </label>
                 <Input
                   id="nombre"
@@ -78,7 +90,7 @@ Mensaje: ${formData.mensaje};
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
+                  Correo electrónico *
                 </label>
                 <Input
                   id="email"
@@ -89,22 +101,6 @@ Mensaje: ${formData.mensaje};
                   required
                   className="w-full"
                   placeholder="tu@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="telefono" className="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono *
-                </label>
-                <Input
-                  id="telefono"
-                  name="telefono"
-                  type="tel"
-                  value={formData.telefono}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                  placeholder="+34 000 000 000"
                 />
               </div>
               
@@ -125,12 +121,13 @@ Mensaje: ${formData.mensaje};
               </div>
               
               <Button 
-                type="submit"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold"
               >
-                Enviar Solicitud
+                {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
               </Button>
-            </form>
+            </div>
           </div>
 
           {/* Collapsible Contact Information */}
@@ -178,7 +175,7 @@ Mensaje: ${formData.mensaje};
 
                   <div className="text-center md:text-left">
                     <h4 className="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
-                      <span className="mr-2">🕒</span> Horários
+                      <span className="mr-2">🕒</span> Horarios
                     </h4>
                     <p className="text-gray-600 text-sm">
                       Lunes a Viernes: 9:00 – 18:00<br />
@@ -206,4 +203,4 @@ Mensaje: ${formData.mensaje};
   );
 };
 
-export default ContactSection
+export default ContactSection;

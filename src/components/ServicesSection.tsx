@@ -88,7 +88,7 @@ const ServicesSection = () => {
                 onClick={scrollToContact}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold w-fit"
               >
-                Pedir Orçamento
+                Pedir Presupuesto
               </Button>
             </div>
 
@@ -148,7 +148,7 @@ const ServicesSection = () => {
                       onClick={scrollToContact}
                       className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 font-semibold"
                     >
-                      Pedir Orçamento
+                      Pedir Presupuesto
                     </Button>
                   </div>
                 </AccordionContent>
