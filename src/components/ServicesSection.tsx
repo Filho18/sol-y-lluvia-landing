@@ -33,7 +33,7 @@ const ServicesSection = () => {
       description: "Protección vertical contra viento y sol lateral. Ideal para crear espacios más íntimos y protegidos en terrazas, balcones y jardines."
     },
     {
-      name: "Toldo Vertical Screen Zíper",
+      name: "Toldo Vertical Screen Zíp",
       image: "https://i.imgur.com/E3Rbd3Z.jpeg",
       description: "Sistema de cremallera para máxima estabilidad y tensión. La tecnología más avanzada en protección solar vertical con acabados premium."
     },
