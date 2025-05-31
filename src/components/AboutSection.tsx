@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Mail, Phone } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -42,29 +41,6 @@ const AboutSection = () => {
               </p>
             </div>
             
-            {/* Contact Icons */}
-            <div className="flex space-x-6 mb-8">
-              <div className="flex items-center space-x-3">
-                <div className="bg-blue-600 p-3 rounded-full">
-                  <Mail className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Email</p>
-                  <p className="font-semibold text-gray-900">solylluvia.eu@gmail.com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="bg-green-600 p-3 rounded-full">
-                  <Phone className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Teléfono</p>
-                  <p className="font-semibold text-gray-900">+34 618 14 59 14</p>
-                </div>
-              </div>
-            </div>
-            
             {/* Statistics */}
             <div className="grid grid-cols-3 gap-8">
               <div className="text-center">
@@ -74,7 +50,7 @@ const AboutSection = () => {
               
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                <div className="text-sm text-gray-600">Proyectos Completados</div>
+                <div className="text-sm text-gray-600">Proyectos Concluidos</div>
               </div>
               
               <div className="text-center">

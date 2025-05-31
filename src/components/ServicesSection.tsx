@@ -33,21 +33,26 @@ const ServicesSection = () => {
       description: "Protección vertical contra viento y sol lateral. Ideal para crear espacios más íntimos y protegidos en terrazas, balcones y jardines."
     },
     {
-      name: "Toldo Vertical Screen Zíp",
+      name: "Toldo Vertical Screen Zíper",
       image: "https://i.imgur.com/E3Rbd3Z.jpeg",
       description: "Sistema de cremallera para máxima estabilidad y tensión. La tecnología más avanzada en protección solar vertical con acabados premium."
     },
     {
-      name: "Cortinas de Cristal",
+      name: "Cortinas de Vidrio",
       image: "https://i.imgur.com/cJSOtDG.jpeg",
       description: "Cerramiento transparente y elegante sin perfiles verticales. Transforma tu terraza en un espacio utilizable todo el año manteniendo las vistas."
     },
     {
-      name: "Estores de Enrollables",
+      name: "Estores de Rolo",
       image: "https://i.imgur.com/lb7Aayr.jpeg",
       description: "Control preciso de la luminosidad interior con diseño minimalista. Perfectos para ventanas y espacios interiores que requieren privacidad y control solar."
     },
-   
+    {
+      name: "Velas Tensionadas",
+      image: "https://i.imgur.com/bRW11Kg.jpeg",
+      description: "Protección solar moderna y decorativa con formas geométricas. Aporta un toque contemporáneo y artístico a cualquier espacio exterior."
+    }
+  ];
 
   const scrollToContact = () => {
     const element = document.getElementById('contacto');
