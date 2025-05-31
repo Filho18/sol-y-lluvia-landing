@@ -17,7 +17,7 @@ const FixedSideButtons = () => {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 flex flex-col space-y-3">
+    <div className="fixed right-6 bottom-6 z-40 flex flex-col space-y-3">
       {/* Email Button */}
       <button
         onClick={scrollToContact}
