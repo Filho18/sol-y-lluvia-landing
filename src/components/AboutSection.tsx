@@ -24,12 +24,12 @@ const AboutSection = () => {
             <div className="text-lg text-gray-700 leading-relaxed space-y-6 mb-8">
               <p>
                 Con más de <strong className="text-blue-600">19 años de experiencia</strong>, Sol y Lluvia se ha convertido en un nombre de 
-                confianza en la instalación de soluciones para espacios exteriores en Galicia.
+                confianza en la instalación de soluciones para espacios exteriores e interiores en Galicia.
               </p>
               
               <p>
                 Nuestra dedicación a la <strong className="text-blue-600">calidad e innovación</strong> garantiza que cada cliente reciba 
-                soluciones personalizadas que transforman sus espacios exteriores en 
+                soluciones personalizadas que transforman sus espacios exteriores e interiores en 
                 áreas funcionales y elegantes, independientemente de las condiciones 
                 climáticas.
               </p>
