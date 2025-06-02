@@ -26,7 +26,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight">
-            Transforma tus espacios exteriores
+            Transforma tus espacios 
             <span className="block text-amber-400 font-medium mt-2">con Sol y Lluvia</span>
           </h1>
           
