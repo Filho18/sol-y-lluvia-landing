@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -21,25 +20,33 @@ const HeroSection = () => {
           backgroundPosition: 'center',
         }}
       />
-      
+
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight">
+        <div className="max-w-4xl mx-auto bg-black bg-opacity-30 p-6 rounded-xl shadow-lg">
+          <h1 
+            className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight"
+            style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.7)' }}
+          >
             Transforma tus espacios 
-            <span className="block text-amber-400 font-medium mt-2">con Sol y Lluvia</span>
+            <span className="block text-amber-400 font-semibold mt-2 animate-fade-in">
+              con Sol y Lluvia
+            </span>
           </h1>
-          
-          <p className="text-xl sm:text-2xl lg:text-2xl mb-10 text-gray-100 max-w-3xl mx-auto font-light leading-relaxed">
+
+          <p 
+            className="text-xl sm:text-2xl lg:text-2xl mb-10 text-gray-100 max-w-3xl mx-auto font-light leading-relaxed"
+            style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }}
+          >
             Especialistas en toldos, pérgolas bioclimáticas y soluciones de protección solar desde 2004
           </p>
-          
+
           <Button 
             size="lg"
             onClick={scrollToContact}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-xl font-medium rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-xl font-medium rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300"
           >
-            Solicita un Presupuesto
+            📩 Solicita un Presupuesto
           </Button>
         </div>
       </div>
