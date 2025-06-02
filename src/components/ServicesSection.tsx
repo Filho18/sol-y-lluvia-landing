@@ -43,7 +43,7 @@ const ServicesSection = () => {
       description: "Cerramiento transparente y elegante sin perfiles verticales. Transforma tu terraza en un espacio utilizable todo el año manteniendo las vistas."
     },
     {
-      name: "Estores de Enrollables",
+      name: "Estores  Enrollables",
       image: "https://i.imgur.com/lb7Aayr.jpeg",
       description: "Control preciso de la luminosidad interior con diseño minimalista. Perfectos para ventanas y espacios interiores que requieren privacidad y control solar."
     },
