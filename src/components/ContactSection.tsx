@@ -88,7 +88,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className="w-full"
-                  placeholder="Tu nombre completo"
+                  placeholder="Tu nombre"
                 />
               </div>
               
