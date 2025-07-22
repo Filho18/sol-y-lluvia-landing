@@ -31,8 +31,8 @@ const Footer = () => {
                 <p>Baio, 15150 Zas, A Coruña</p>
               </div>
               <div>
-                <a href="mailto:solylluvia.eu@gmail.com" className="hover:text-blue-400 transition-colors">
-                  solylluvia.eu@gmail.com
+                <a href="mailto:" className="hover:text-blue-400 transition-colors">
+                  
                 </a>
               </div>
               <div>
