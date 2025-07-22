@@ -63,9 +63,11 @@ const ContactSection = () => {
           <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
             Contacto
           </h2>
-          <p className="text-lg text-orange-600 font-semibold max-w-2xl mx-auto bg-orange-50 border-l-4 border-orange-400 px-4 py-3 rounded-r-lg">
-            ⚠️ ¡No esperes más! ¿Listo para transformar tu espacio? Contáctanos AHORA y solicita tu presupuesto gratuito.
-          </p>
+          <div className="text-lg text-red-600 font-semibold max-w-2xl mx-auto bg-red-50 border-l-4 border-red-400 px-4 py-3 rounded-r-lg">
+            <p className="mb-2">⚠️ <strong>El equipo de TI de Solylluvia informa que el formulario de contacto por correo electrónico está temporalmente fuera de servicio por mantenimiento.</strong></p>
+            <p className="mb-2">📱 Por favor, contáctanos vía WhatsApp — estaremos encantados de ayudarte.</p>
+            <p>🔧 Disculpa las molestias. Volveremos pronto.</p>
+          </div>
         </div>
 
         <div className="max-w-2xl mx-auto">
