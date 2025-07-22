@@ -63,8 +63,8 @@ const ContactSection = () => {
           <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
             Contacto
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            ¿Listo para transformar tu espacio? Contáctanos y solicita tu presupuesto gratuito.
+          <p className="text-lg text-orange-600 font-semibold max-w-2xl mx-auto bg-orange-50 border-l-4 border-orange-400 px-4 py-3 rounded-r-lg">
+            ⚠️ ¡No esperes más! ¿Listo para transformar tu espacio? Contáctanos AHORA y solicita tu presupuesto gratuito.
           </p>
         </div>
 
