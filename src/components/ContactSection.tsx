@@ -22,32 +22,35 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const data = {
-        nombre: formData.nombre,
-        email: formData.email,
-        telefono: formData.telefono,
-        asunto: formData.asunto,
-        mensaje: formData.mensaje,
-      };
+      // Como a função Netlify não está funcionando, vamos redirecionar para WhatsApp
+      const message = `Hola! Me gustaría solicitar un presupuesto:
       
-      const response = await fetch('/.netlify/functions/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+Nombre: ${formData.nombre}
+Email: ${formData.email}
+Teléfono: ${formData.telefono}
+Asunto: ${formData.asunto}
+Mensaje: ${formData.mensaje}`;
+      
+      const whatsappUrl = `https://wa.me/34618145914?text=${encodeURIComponent(message)}`;
+      
+      toast({
+        title: "Redirigiendo a WhatsApp...",
+        description: "Te estamos conectando con nuestro equipo",
       });
       
-      const result = await response.json();
-
-      if (response.ok) {
-        window.location.href = result.redirect; // Redireciona para a URL retornada pela função
-      } else {
-        toast({
-          title: result.message || "Error al enviar. Inténtalo de nuevo.",
-          variant: "destructive",
-        });
-      }
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+      }, 1000);
+      
+      // Limpiar formulario
+      setFormData({
+        nombre: '',
+        email: '',
+        telefono: '',
+        asunto: '',
+        mensaje: ''
+      });
+      
     } catch (error) {
       console.error('Error al enviar:', error);
       toast({
