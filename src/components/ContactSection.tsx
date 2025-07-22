@@ -215,7 +215,7 @@ const ContactSection = () => {
                     <h4 className="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
                       <span className="mr-2">📧</span> Email
                     </h4>
-                    <p className="text-gray-600 text-sm">solylluvia.eu@gmail.com</p>
+                    <p className="text-gray-600 text-sm"></p>
                   </div>
 
                   <div className="text-center md:text-left">
