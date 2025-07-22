@@ -22,29 +22,36 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const formDataObj = new FormData();
-      formDataObj.append('nombre', formData.nombre);
-      formDataObj.append('email', formData.email);
-      formDataObj.append('telefono', formData.telefono);
-      formDataObj.append('asunto', formData.asunto);
-      formDataObj.append('mensaje', formData.mensaje);
+      const data = {
+        nombre: formData.nombre,
+        email: formData.email,
+        telefono: formData.telefono,
+        asunto: formData.asunto,
+        mensaje: formData.mensaje,
+      };
       
-      const response = await fetch('https://formspree.io/f/xeogyygp', {
+      const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: formDataObj
+        body: JSON.stringify(data),
       });
       
+      const result = await response.json();
+
       if (response.ok) {
-        window.location.href = 'https://solylluviagraias.netlify.app/';
+        window.location.href = result.redirect; // Redireciona para a URL retornada pela função
       } else {
-        throw new Error('Error en el envío');
+        toast({
+          title: result.message || "Error al enviar. Inténtalo de nuevo.",
+          variant: "destructive",
+        });
       }
     } catch (error) {
+      console.error('Error al enviar:', error);
       toast({
-        title: "Error al enviar. Inténtalo de nuevo.",
+        title: "Error de red. Verifique su conexión.",
         variant: "destructive",
       });
     } finally {
