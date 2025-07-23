@@ -1,5 +1,6 @@
 [build]
   publish = "dist"
+  command = "bun run build"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -8,7 +9,3 @@
   directory = "netlify/functions"
   node_bundler = "esbuild" # Força o uso do esbuild para empacotar as funções
   external_node_modules = ["nodemailer"] # Garante que o nodemailer seja incluído
-
-[build.command]
-  command = "bun run build"
-
