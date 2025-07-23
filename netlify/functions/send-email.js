@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer"; // <-- Linha corrigida e movida para o topo
+import nodemailer from "nodemailer";
 
 exports.handler = async (event, context) => {
   // Configurar CORS
@@ -41,7 +41,6 @@ exports.handler = async (event, context) => {
     }
 
     // Configurar o transporter do Nodemailer
-    // A chamada para nodemailer.createTransport agora está correta e usa o Nodemailer importado
     const transporter = nodemailer.createTransport({
       service: "gmail", // ou outro provedor SMTP
       auth: {
@@ -54,6 +53,7 @@ exports.handler = async (event, context) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_TO || process.env.EMAIL_USER, // E-mail de destino (variável de ambiente)
+      replyTo: email, // <-- NOVA LINHA AQUI
       subject: `Nova mensagem de ${nombre} - ${asunto || "Sol y Lluvia Landing"}`,
       html: `
         <h2>Mais um Futuro Cliente Jefferson. BOA VENDA</h2>
