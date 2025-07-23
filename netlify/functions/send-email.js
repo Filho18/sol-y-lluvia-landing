@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer"; // <-- Linha corrigida e movida para o topo
 
 exports.handler = async (event, context) => {
   // Configurar CORS
@@ -41,7 +41,8 @@ exports.handler = async (event, context) => {
     }
 
     // Configurar o transporter do Nodemailer
-    const transporter = nodemailer.createTransporter({
+    // A chamada para nodemailer.createTransport agora está correta e usa o Nodemailer importado
+    const transporter = nodemailer.createTransport({
       service: "gmail", // ou outro provedor SMTP
       auth: {
         user: process.env.EMAIL_USER, // Seu e-mail (variável de ambiente)
@@ -73,8 +74,8 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ 
-        success: true, 
+      body: JSON.stringify({
+        success: true,
         message: "E-mail enviado com sucesso!",
         redirect: "https://solylluviagraias.netlify.app/"
       }),
@@ -82,11 +83,11 @@ exports.handler = async (event, context) => {
 
   } catch (error) {
     console.error("Erro ao enviar e-mail:", error);
-    
+
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         error: "Erro interno do servidor",
         message: "Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde."
       }),
