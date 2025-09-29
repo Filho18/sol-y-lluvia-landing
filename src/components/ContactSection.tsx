@@ -10,6 +10,7 @@ const ContactSection = () => {
     nombre: '',
     email: '',
     telefono: '',
+    ciudad: '',
     asunto: '',
     mensaje: ''
   });
@@ -26,6 +27,7 @@ const ContactSection = () => {
         nombre: formData.nombre,
         email: formData.email,
         telefono: formData.telefono,
+        ciudad: formData.ciudad,
         asunto: formData.asunto,
         mensaje: formData.mensaje,
       };
@@ -128,6 +130,22 @@ const ContactSection = () => {
                   required
                   className="w-full"
                   placeholder="+34 123 456 789"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ciudad" className="block text-sm font-medium text-gray-700 mb-2">
+                  Ciudad *
+                </label>
+                <Input
+                  id="ciudad"
+                  name="ciudad"
+                  type="text"
+                  value={formData.ciudad}
+                  onChange={handleChange}
+                  required
+                  className="w-full"
+                  placeholder="Tu ciudad"
                 />
               </div>
 

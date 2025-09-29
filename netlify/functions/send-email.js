@@ -29,14 +29,14 @@ exports.handler = async (event, context) => {
   try {
     // Parse do corpo da requisição
     const body = JSON.parse(event.body);
-    const { nombre, email, telefono, asunto, mensaje } = body;
+    const { nombre, email, telefono, ciudad, asunto, mensaje } = body;
 
     // Validação básica
-    if (!nombre || !email || !mensaje) {
+    if (!nombre || !email || !ciudad || !mensaje) {
       return {
         statusCode: 400,
         headers,
-        body: JSON.stringify({ error: "Campos obrigatórios: nome, email e mensagem" }),
+        body: JSON.stringify({ error: "Campos obrigatórios: nome, email, cidade e mensagem" }),
       };
     }
 
@@ -54,11 +54,12 @@ exports.handler = async (event, context) => {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_TO || process.env.EMAIL_USER, // E-mail de destino (variável de ambiente)
       replyTo: email, // <-- NOVA LINHA AQUI
-      subject: `Nova mensagem de ${nombre} - ${asunto || "Sol y Lluvia Landing"}`,
+      subject: `Nova mensagem de ${nombre} (${ciudad}) - ${asunto || "Sol y Lluvia Landing"}`,
       html: `
         <h2>Mais um Futuro Cliente Jefferson. BOA VENDA</h2>
         <p><strong>Nome:</strong> ${nombre}</p>
         <p><strong>E-mail:</strong> ${email}</p>
+        <p><strong>Cidade:</strong> ${ciudad}</p>
         ${telefono ? `<p><strong>Telefone:</strong> ${telefono}</p>` : ""}
         ${asunto ? `<p><strong>Assunto:</strong> ${asunto}</p>` : ""}
         <p><strong>Mensagem:</strong></p>
