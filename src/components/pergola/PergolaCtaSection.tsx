@@ -10,10 +10,22 @@ const PergolaCtaSection = () => {
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-white">
+    <section className="pt-32 pb-12 lg:pt-40 lg:pb-16 bg-amber-400">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 lg:p-12 text-center shadow-sm">
+          {/* Hero text */}
+          <div className="text-center mb-8">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 leading-tight">
+              Peça orçamento de{' '}
+              <span className="font-semibold text-white">Pérgola Bioclimática</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-white font-light">
+              Sem compromisso
+            </p>
+          </div>
+          
+          {/* Card */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 lg:p-12 text-center shadow-lg">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
               Receba um orçamento personalizado
             </h2>
