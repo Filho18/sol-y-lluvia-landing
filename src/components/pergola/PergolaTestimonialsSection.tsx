@@ -42,7 +42,7 @@ const PergolaTestimonialsSection = () => {
           <Carousel
             opts={{
               align: "start",
-              loop: false
+              loop: true
             }}
             className="w-full"
           >
