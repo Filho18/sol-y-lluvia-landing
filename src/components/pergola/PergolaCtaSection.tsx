@@ -10,8 +10,15 @@ const PergolaCtaSection = () => {
   };
 
   return (
-    <section className="pt-32 pb-12 lg:pt-40 lg:pb-16 bg-amber-400">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section 
+      className="pt-32 pb-12 lg:pt-40 lg:pb-16 relative"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imgur.com/iUieITm.jpeg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-2xl mx-auto">
           {/* Hero text */}
           <div className="text-center mb-8">
