@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-12 max-w-5xl mx-auto">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
@@ -40,6 +40,15 @@ const Footer = () => {
                   +34 618 14 59 14
                 </a>
               </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Enlaces</h3>
+            <div className="space-y-2 text-gray-400">
+              <a href="/" className="block hover:text-blue-400 transition-colors">Inicio</a>
+              <a href="/pergolas-bioclimaticas" className="block hover:text-blue-400 transition-colors">Pérgolas Bioclimáticas</a>
             </div>
           </div>
 
