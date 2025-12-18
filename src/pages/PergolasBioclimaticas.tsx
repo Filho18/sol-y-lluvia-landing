@@ -2,8 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PergolaCtaSection from '@/components/pergola/PergolaCtaSection';
-import PergolaServiceSection from '@/components/pergola/PergolaServiceSection';
-import PergolasBenefitsSection from '@/components/pergola/PergolasBenefitsSection';
+import PergolaInfoSection from '@/components/pergola/PergolaInfoSection';
 
 const PergolasBioclimaticas = () => {
   return (
@@ -11,8 +10,7 @@ const PergolasBioclimaticas = () => {
       <Header />
       <main>
         <PergolaCtaSection />
-        <PergolaServiceSection />
-        <PergolasBenefitsSection />
+        <PergolaInfoSection />
       </main>
       <Footer />
     </div>
