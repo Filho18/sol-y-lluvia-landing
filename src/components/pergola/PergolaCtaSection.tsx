@@ -23,28 +23,28 @@ const PergolaCtaSection = () => {
           {/* Hero text */}
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 leading-tight">
-              Peça orçamento de{' '}
+              Pide presupuesto de{' '}
               <span className="font-semibold text-amber-400">Pérgola Bioclimática</span>
             </h1>
             <p className="text-lg sm:text-xl text-white font-light">
-              Sem compromisso
+              Sin compromiso
             </p>
           </div>
           
           {/* Card */}
           <div className="bg-white border border-gray-200 rounded-2xl p-8 lg:p-12 text-center shadow-lg">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
-              Receba um orçamento personalizado
+              Recibe un presupuesto personalizado
             </h2>
             <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-              e saiba exatamente qual é o valor de investimento do teu projeto
+              y conoce exactamente cuál es el valor de inversión de tu proyecto
             </p>
             <Button 
               onClick={scrollToContact}
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-medium rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              Peça o seu orçamento
+              Pide tu presupuesto
             </Button>
           </div>
         </div>

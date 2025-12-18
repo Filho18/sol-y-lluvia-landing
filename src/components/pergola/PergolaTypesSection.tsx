@@ -10,27 +10,27 @@ import {
 const pergolaTypes = [
   {
     title: "Pérgola Autoportante",
-    description: "Estrutura independente, ideal para jardins e espaços abertos.",
+    description: "Estructura independiente, ideal para jardines y espacios abiertos.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
   },
   {
-    title: "Pérgola Adossada",
-    description: "Fixada à parede da casa, perfeita para terraços e varandas.",
+    title: "Pérgola Adosada",
+    description: "Fijada a la pared de la casa, perfecta para terrazas y balcones.",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
   },
   {
-    title: "Pérgola com Cortinas de Vidro",
-    description: "Proteção total contra vento e chuva com elegância.",
+    title: "Pérgola con Cortinas de Cristal",
+    description: "Protección total contra viento y lluvia con elegancia.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
   },
   {
     title: "Pérgola Motorizada",
-    description: "Controlo automático das lâminas com comando remoto.",
+    description: "Control automático de las lamas con mando a distancia.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop"
   },
   {
-    title: "Pérgola com Iluminação LED",
-    description: "Ambiente perfeito para noites ao ar livre com iluminação integrada.",
+    title: "Pérgola con Iluminación LED",
+    description: "Ambiente perfecto para noches al aire libre con iluminación integrada.",
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop"
   }
 ];
@@ -44,7 +44,7 @@ const PergolaTypesSection = () => {
             Tipos de Pérgola Bioclimática
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Descubra as diferentes opções que temos para transformar o seu espaço exterior
+            Descubre las diferentes opciones que tenemos para transformar tu espacio exterior
           </p>
         </div>
 

@@ -4,27 +4,27 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const PergolaTestimonialsSection = () => {
   const testimonials = [
     {
-      name: "António Ferreira",
+      name: "Antonio Ferreira",
       location: "A Coruña",
-      text: "O atendimento foi impecável desde o primeiro contacto. Sempre disponíveis para esclarecer dúvidas e muito profissionais.",
+      text: "La atención fue impecable desde el primer contacto. Siempre disponibles para resolver dudas y muy profesionales.",
       rating: 5
     },
     {
       name: "Carla Sousa",
       location: "Santiago de Compostela",
-      text: "Fiquei impressionada com a rapidez de resposta e execução. Em menos de duas semanas tinha a minha pérgola instalada!",
+      text: "Me quedé impresionada con la rapidez de respuesta y ejecución. ¡En menos de dos semanas tenía mi pérgola instalada!",
       rating: 5
     },
     {
       name: "Miguel Santos",
       location: "Vigo",
-      text: "A sinceridade da equipa foi o que mais me marcou. Orçamento claro, sem surpresas, exatamente o que foi prometido.",
+      text: "La sinceridad del equipo fue lo que más me marcó. Presupuesto claro, sin sorpresas, exactamente lo prometido.",
       rating: 5
     },
     {
       name: "Teresa Oliveira",
       location: "Pontevedra",
-      text: "Do primeiro contacto à conclusão do projeto, a experiência foi excelente. Atendimento dedicado e resultado final perfeito.",
+      text: "Desde el primer contacto hasta la conclusión del proyecto, la experiencia fue excelente. Atención dedicada y resultado final perfecto.",
       rating: 5
     }
   ];
@@ -34,7 +34,7 @@ const PergolaTestimonialsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
-            Conquistamos Corações e Projetos
+            Conquistamos Corazones y Proyectos
           </h2>
         </div>
 
