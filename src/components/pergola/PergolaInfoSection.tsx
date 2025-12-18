@@ -3,13 +3,13 @@ import React from 'react';
 const PergolaInfoSection = () => {
   const benefits = [
     {
-      text: "Atendimento gratuito com uma equipa treinada para tirar as tuas dúvidas"
+      text: "Atención gratuita con un equipo formado para resolver tus dudas"
     },
     {
-      text: "Clareza de quanto custará o projeto incluindo a instalação"
+      text: "Claridad sobre cuánto costará el proyecto incluyendo la instalación"
     },
     {
-      text: "Em troca queremos ganhar reconhecimento e relacionamento dentro da Comunidade"
+      text: "A cambio queremos ganar reconocimiento y relación dentro de la Comunidad"
     }
   ];
 
@@ -20,9 +20,9 @@ const PergolaInfoSection = () => {
           {/* Texto do horário */}
           <div className="text-center mb-0 pb-8 border-b border-gray-300">
             <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">
-              A nossa equipa foi treinada para prestar serviço de atendimento das{' '}
-              <span className="font-semibold text-gray-900">06 às 22h</span>,{' '}
-              <span className="font-semibold text-gray-900">7 dias por semana</span> até 31 de dezembro
+              Nuestro equipo está formado para prestar servicio de atención de{' '}
+              <span className="font-semibold text-gray-900">06 a 22h</span>,{' '}
+              <span className="font-semibold text-gray-900">7 días a la semana</span> hasta el 31 de diciembre
             </p>
           </div>
           
