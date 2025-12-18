@@ -5,6 +5,7 @@ import PergolaCtaSection from '@/components/pergola/PergolaCtaSection';
 import PergolaInfoSection from '@/components/pergola/PergolaInfoSection';
 import PergolaTestimonialsSection from '@/components/pergola/PergolaTestimonialsSection';
 import PergolaTypesSection from '@/components/pergola/PergolaTypesSection';
+import PergolaContactSection from '@/components/pergola/PergolaContactSection';
 
 const PergolasBioclimaticas = () => {
   return (
@@ -15,6 +16,7 @@ const PergolasBioclimaticas = () => {
         <PergolaInfoSection />
         <PergolaTestimonialsSection />
         <PergolaTypesSection />
+        <PergolaContactSection />
       </main>
       <Footer />
     </div>
