@@ -15,8 +15,8 @@ const PergolasBioclimaticas = () => {
         <PergolaCtaSection />
         <PergolaInfoSection />
         <PergolaTestimonialsSection />
-        <PergolaTypesSection />
         <PergolaAboutSection />
+        <PergolaTypesSection />
       </main>
       <Footer />
     </div>
