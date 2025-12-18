@@ -22,9 +22,9 @@ const PergolaCtaSection = () => {
         <div className="max-w-2xl mx-auto">
           {/* Hero text */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 leading-tight">
+            <h1 className="text-[48px] font-bold text-white mb-4 leading-tight">
               Pide presupuesto de{' '}
-              <span className="font-semibold text-amber-400">Pérgola Bioclimática</span>
+              <span className="text-amber-400">Pérgola Bioclimática</span>
             </h1>
             <p className="text-lg sm:text-xl text-white font-light">
               Sin compromiso
