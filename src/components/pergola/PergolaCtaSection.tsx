@@ -24,7 +24,7 @@ const PergolaCtaSection = () => {
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 leading-tight">
               Peça orçamento de{' '}
-              <span className="font-semibold text-white">Pérgola Bioclimática</span>
+              <span className="font-semibold text-amber-400">Pérgola Bioclimática</span>
             </h1>
             <p className="text-lg sm:text-xl text-white font-light">
               Sem compromisso
