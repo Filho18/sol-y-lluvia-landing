@@ -27,11 +27,11 @@ const PergolaInfoSection = () => {
           </div>
           
           {/* 3 Quadrados de benefícios */}
-          <div className="grid md:grid-cols-3 border-l border-r border-b border-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-3 border-l border-r border-b border-gray-300">
             {benefits.map((benefit, index) => (
               <div 
                 key={index}
-                className={`p-6 lg:p-8 text-center ${index < 2 ? 'border-r border-gray-300' : ''}`}
+                className={`p-6 lg:p-8 text-center border-b md:border-b-0 last:border-b-0 ${index < 2 ? 'md:border-r border-gray-300' : ''}`}
               >
                 <p className="text-gray-700 leading-relaxed">
                   {benefit.text}
