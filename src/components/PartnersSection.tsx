@@ -5,7 +5,7 @@ const partners = [
   { name: 'Saxun', logo: 'https://i.imgur.com/QAWl3ep.png' },
   { name: 'Sauleda', logo: 'https://i.imgur.com/OIsTsHc.png' },
   { name: 'Marklux', logo: 'https://i.imgur.com/S34hIS5.png' },
-  { name: 'Parceiro 5', logo: 'https://via.placeholder.com/150x80?text=Partner+5' },
+  { name: 'Llaza', logo: 'https://i.imgur.com/NUCSHUC.png' },
 ];
 
 const PartnersSection = () => {
