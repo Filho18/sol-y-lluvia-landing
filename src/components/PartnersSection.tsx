@@ -1,7 +1,7 @@
 import React from 'react';
 
 const partners = [
-  { name: 'Parceiro 1', logo: 'https://via.placeholder.com/150x80?text=Partner+1' },
+  { name: 'Somfy', logo: 'https://i.imgur.com/sOoGUin.png' },
   { name: 'Parceiro 2', logo: 'https://via.placeholder.com/150x80?text=Partner+2' },
   { name: 'Parceiro 3', logo: 'https://via.placeholder.com/150x80?text=Partner+3' },
   { name: 'Parceiro 4', logo: 'https://via.placeholder.com/150x80?text=Partner+4' },
