@@ -9,8 +9,8 @@ const partners = [
 ];
 
 const PartnersSection = () => {
-  // Duplicate once for seamless loop (animation scrolls -50% of total width)
-  const duplicatedPartners = [...partners, ...partners];
+  // Quadruple partners for seamless infinite scroll on all screen sizes
+  const duplicatedPartners = [...partners, ...partners, ...partners, ...partners];
 
   return (
     <section className="py-12 bg-muted/30 overflow-hidden">
