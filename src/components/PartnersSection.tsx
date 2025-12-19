@@ -9,8 +9,8 @@ const partners = [
 ];
 
 const PartnersSection = () => {
-  // Duplicate partners array for seamless loop
-  const duplicatedPartners = [...partners, ...partners];
+  // Triplicate partners array for seamless loop on all screen sizes
+  const duplicatedPartners = [...partners, ...partners, ...partners];
 
   return (
     <section className="py-12 bg-muted/30 overflow-hidden">
