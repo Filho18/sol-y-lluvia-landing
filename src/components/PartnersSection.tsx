@@ -4,7 +4,7 @@ const partners = [
   { name: 'Somfy', logo: 'https://i.imgur.com/sOoGUin.png' },
   { name: 'Saxun', logo: 'https://i.imgur.com/QAWl3ep.png' },
   { name: 'Sauleda', logo: 'https://i.imgur.com/OIsTsHc.png' },
-  { name: 'Parceiro 4', logo: 'https://via.placeholder.com/150x80?text=Partner+4' },
+  { name: 'Marklux', logo: 'https://i.imgur.com/S34hIS5.png' },
   { name: 'Parceiro 5', logo: 'https://via.placeholder.com/150x80?text=Partner+5' },
 ];
 
