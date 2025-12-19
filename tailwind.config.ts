@@ -82,11 +82,7 @@ export default {
 				},
 				scroll: {
 					"0%": { transform: "translateX(0)" },
-					"100%": {
-						// Move exactly one copy of the logos when we render three sets
-						// (original + two duplicates) so the loop doesn't reset early on mobile.
-						transform: "translateX(-33.333333%)",
-					},
+					"100%": { transform: "translateX(-50%)" },
 				},
 			},
 			animation: {
