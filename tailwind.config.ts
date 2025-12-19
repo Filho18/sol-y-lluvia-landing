@@ -80,18 +80,20 @@ export default {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0" },
 				},
+				// FIXED: Changed from -25% to -50% since we now duplicate 2x instead of 4x
+				// Using -50% moves exactly one complete set of partners
 				scroll: {
 					"0%": { transform: "translateX(0)" },
-					"100%": { transform: "translateX(-25%)" },
+					"100%": { transform: "translateX(-50%)" },
 				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
-				scroll: "scroll 15s linear infinite",
+				// Increased duration for smoother scroll
+				scroll: "scroll 20s linear infinite",
 			},
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
