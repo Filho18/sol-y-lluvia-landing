@@ -9,8 +9,8 @@ const partners = [
 ];
 
 const PartnersSection = () => {
-  // Quadruple partners for seamless infinite scroll on all screen sizes
-  const duplicatedPartners = [...partners, ...partners, ...partners, ...partners];
+  // Duplicate only 2x - the animation moves -50% which equals exactly one set
+  const duplicatedPartners = [...partners, ...partners];
 
   return (
     <section className="py-12 bg-muted/30 overflow-hidden">
@@ -21,17 +21,21 @@ const PartnersSection = () => {
       </div>
       
       <div className="relative">
-        <div className="flex animate-scroll">
+        <div 
+          className="flex animate-scroll hover:[animation-play-state:paused]"
+          style={{ width: 'max-content' }}
+        >
           {duplicatedPartners.map((partner, index) => (
             <div
               key={index}
-              className="flex-shrink-0 mx-8 md:mx-12"
+              className="flex-shrink-0 mx-4 md:mx-6"
             >
-              <div className="bg-white rounded-lg shadow-sm p-6 flex items-center justify-center h-24 w-40 md:w-48 hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 flex items-center justify-center h-20 md:h-24 w-40 md:w-48 hover:shadow-md transition-shadow">
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="max-h-16 max-w-full object-contain"
+                  className="max-h-12 md:max-h-16 max-w-full object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>
