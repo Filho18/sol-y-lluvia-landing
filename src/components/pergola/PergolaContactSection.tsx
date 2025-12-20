@@ -52,9 +52,23 @@ const PergolaContactSection = () => {
           body: JSON.stringify(formData),
         });
         
+        // Check if response is not ok (404, 500, etc.)
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Server error:', response.status, errorText);
+          toast({
+            title: response.status === 404 
+              ? "Función de email no disponible en vista previa. Funcionará en producción."
+              : "Error al enviar. Inténtalo de nuevo.",
+            variant: "destructive",
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        
         const result = await response.json();
 
-        if (response.ok) {
+        if (result.success) {
           window.location.href = result.redirect;
         } else {
           toast({
