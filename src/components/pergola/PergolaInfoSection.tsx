@@ -21,8 +21,9 @@ const PergolaInfoSection = () => {
           <div className="text-center mb-0 pb-8 border-b border-gray-300">
             <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">
               Nuestro equipo está formado para prestar servicio de atención de{' '}
-              <span className="font-semibold text-gray-900">06 a 22h</span>,{' '}
-              <span className="font-semibold text-gray-900">7 días a la semana</span> hasta el 31 de diciembre
+              <span className="font-semibold text-gray-900">9 a 20h de lunes a viernes</span>{' '}
+              y de{' '}
+              <span className="font-semibold text-gray-900">9h a 14h los sábados</span>
             </p>
           </div>
           
