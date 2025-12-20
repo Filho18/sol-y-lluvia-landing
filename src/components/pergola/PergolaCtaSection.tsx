@@ -26,9 +26,6 @@ const PergolaCtaSection = () => {
               Pide tu presupuesto de{' '}
               <span className="text-amber-400">Pérgola Bioclimática</span>
             </h1>
-            <p className="text-lg sm:text-xl text-white font-light">
-              Sin compromiso
-            </p>
           </div>
           
           {/* Card */}
