@@ -32,7 +32,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src="https://i.imgur.com/ZjcQG64.png" 
+              src="https://i.imgur.com/KBICbVW.png" 
               alt="Sol y Lluvia"
               className="h-12 sm:h-14 w-auto"
             />
