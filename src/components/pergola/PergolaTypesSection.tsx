@@ -16,7 +16,7 @@ const pergolaTypes = [
   {
     title: "Pérgola Adosada",
     description: "Fijada a la pared de la casa, perfecta para terrazas y balcones.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
+    image: "https://i.imgur.com/u8EXlXQ.jpeg"
   },
   {
     title: "Pérgola con Cortinas de Cristal",
