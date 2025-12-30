@@ -21,17 +21,17 @@ const pergolaTypes = [
   {
     title: "Pérgola con Cortinas de Cristal",
     description: "Protección total contra viento y lluvia con elegancia.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+    image: "https://i.imgur.com/sSE26Yq.jpeg"
   },
   {
-    title: "Pérgola Motorizada",
+    title: "Pérgola Biocliamática Retráctil",
     description: "Control automático de las lamas con mando a distancia.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop"
+    image: "https://i.imgur.com/TsMINqd.jpeg"
   },
   {
     title: "Pérgola con Iluminación LED",
     description: "Ambiente perfecto para noches al aire libre con iluminación integrada.",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop"
+    image: "https://i.imgur.com/sSE26Yq.jpeg"
   }
 ];
 
