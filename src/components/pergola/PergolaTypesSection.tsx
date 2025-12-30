@@ -11,7 +11,7 @@ const pergolaTypes = [
   {
     title: "Pérgola Autoportante",
     description: "Estructura independiente, ideal para jardines y espacios abiertos.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
+    image: "https://i.imgur.com/6kZJIj2.jpeg"
   },
   {
     title: "Pérgola Adosada",
