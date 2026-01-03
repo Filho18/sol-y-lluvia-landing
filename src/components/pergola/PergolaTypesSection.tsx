@@ -24,7 +24,7 @@ const pergolaTypes = [
     image: "https://i.imgur.com/sSE26Yq.jpeg"
   },
   {
-    title: "Pérgola Biocliamática Retráctil",
+    title: "Pérgola Bioclimática Retráctil",
     description: "Control automático de las lamas con mando a distancia.",
     image: "https://i.imgur.com/TsMINqd.jpeg"
   },
