@@ -49,6 +49,7 @@ const Footer = () => {
             <div className="space-y-2 text-gray-400">
               <a href="/" className="block hover:text-blue-400 transition-colors">Inicio</a>
               <a href="/pergolas-bioclimaticas" className="block hover:text-blue-400 transition-colors">Pérgolas Bioclimáticas</a>
+              <a href="/toldos" className="block hover:text-blue-400 transition-colors">Toldos</a>
             </div>
           </div>
 
