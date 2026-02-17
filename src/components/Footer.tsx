@@ -50,6 +50,7 @@ const Footer = () => {
               <a href="/" className="block hover:text-blue-400 transition-colors">Inicio</a>
               <a href="/pergolas-bioclimaticas" className="block hover:text-blue-400 transition-colors">Pérgolas Bioclimáticas</a>
               <a href="/toldos" className="block hover:text-blue-400 transition-colors">Toldos</a>
+              <a href="/pergolas-y-toldos" className="block hover:text-blue-400 transition-colors">Pérgolas y Toldos</a>
             </div>
           </div>
 
