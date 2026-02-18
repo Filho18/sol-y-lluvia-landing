@@ -57,13 +57,36 @@ const PergolasYToldos = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  // Lógica de Localização Melhorada
   useEffect(() => {
-    fetch("https://ipapi.co/json/?lang=es")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.city) setUserCity(data.city);
-      })
-      .catch(() => {});
+    const fetchLocation = async () => {
+      // Tentativa 1: ipwhois.app (Geralmente mais preciso em Portugal/Europa)
+      try {
+        const response = await fetch("https://ipwhois.app/json/");
+        const data = await response.json();
+        if (data?.city) {
+          console.log("Localização detetada (ipwhois):", data.city);
+          setUserCity(data.city);
+          return; // Se funcionou, paramos por aqui
+        }
+      } catch (error) {
+        console.warn("ipwhois falhou, a tentar backup...");
+      }
+
+      // Tentativa 2: ipapi.co (Backup caso o primeiro falhe)
+      try {
+        const response = await fetch("https://ipapi.co/json/?lang=es");
+        const data = await response.json();
+        if (data?.city) {
+          console.log("Localização detetada (ipapi):", data.city);
+          setUserCity(data.city);
+        }
+      } catch (error) {
+        console.error("Não foi possível detetar a localização. Mantendo padrão.");
+      }
+    };
+
+    fetchLocation();
   }, []);
 
   const scrollToForm = () => {
