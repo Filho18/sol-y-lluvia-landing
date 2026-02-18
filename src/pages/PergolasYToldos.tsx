@@ -45,7 +45,7 @@ const testimonials = [
 ];
 
 const PergolasYToldos = () => {
-  const [userRegion, setUserRegion] = useState("Galicia");
+  const [userCity, setUserCity] = useState("A Coruña");
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -61,7 +61,7 @@ const PergolasYToldos = () => {
     fetch("https://ipapi.co/json/?lang=es")
       .then((res) => res.json())
       .then((data) => {
-        if (data?.region) setUserRegion(data.region);
+        if (data?.city) setUserCity(data.city);
       })
       .catch(() => {});
   }, []);
@@ -120,7 +120,7 @@ const PergolasYToldos = () => {
               Fabricamos e instalamos todo tipo de toldos y pérgolas bioclimáticas a medida.
             </h1>
             <h2 className="text-xl md:text-2xl font-medium text-blue-600 mb-6">
-              Atendemos en tu región: <span className="font-bold">{userRegion}</span> / Y en toda <span className="font-bold">España</span>.
+              Atendemos en tu ciudad: <span className="font-bold">{userCity}</span> / Y en toda <span className="font-bold">Galicia</span>.
             </h2>
             <p className="text-gray-700 text-base md:text-lg mb-8 max-w-xl mx-auto">
               Haz clic en Solicitar presupuesto, completa el formulario a continuación y nuestro equipo se pondrá en contacto lo antes posible.
