@@ -39,6 +39,10 @@ async function entregarLeadAoPipeline(lead) {
     utm_campaign: lead.utm_campaign || "",
     Asunto: lead.asunto || "",
     Origen: "solylluvia.net (formulario proprio)",
+    // Mesmos labels que o formulario do Duda ja enviava, para os leads novos
+    // ficarem consistentes com os que la estao.
+    "Política de privacidad": lead.privacidad ? "true" : "false",
+    "Autorización contacto": lead.autorizacion ? "true" : "false",
   };
 
   // O secret vai no header e nao na query string, para nao ficar em logs de
@@ -109,6 +113,10 @@ exports.handler = async (event, context) => {
       utm_source,
       utm_medium,
       utm_campaign,
+      // Consentimentos (RGPD). Sao registados no pipeline; quem os obriga e o
+      // formulario, com o atributo required nas checkboxes.
+      privacidad,
+      autorizacion,
     } = body;
 
     // Validação básica
@@ -164,6 +172,8 @@ exports.handler = async (event, context) => {
         utm_source,
         utm_medium,
         utm_campaign,
+        privacidad,
+        autorizacion,
       }),
     ]);
 
