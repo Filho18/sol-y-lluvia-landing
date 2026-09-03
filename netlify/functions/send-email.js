@@ -8,6 +8,58 @@ const ALLOWED_ORIGINS = [
   "https://solylluviaeu.netlify.app",
 ];
 
+// Entrega o lead ao pipeline do Supabase (receive-webhook), que persiste na
+// tabela leads, faz hash do PII e escreve a linha de conversao offline no
+// Google Sheet. Chamada servidor-a-servidor: o secret nunca chega ao browser.
+//
+// O receive-webhook aceita um objeto plano em que CADA CHAVE e tratada como
+// label do campo (mapDudaFields itera Object.entries quando o payload nao e
+// array), pelo que nao foi preciso alterar nada do lado do Supabase. Os labels
+// abaixo sao os que o parser dele ja reconhece; o que nao reconhecer cai em
+// form_data (jsonb).
+async function entregarLeadAoPipeline(lead) {
+  const url = process.env.SUPABASE_WEBHOOK_URL;
+  const secret = process.env.SUPABASE_WEBHOOK_SECRET;
+
+  if (!url || !secret) {
+    throw new Error(
+      "SUPABASE_WEBHOOK_URL ou SUPABASE_WEBHOOK_SECRET nao estao configurados"
+    );
+  }
+
+  const payload = {
+    Nombre: lead.nombre,
+    Email: lead.email,
+    Teléfono: lead.telefono || "",
+    Localidad: lead.ciudad,
+    Mensaje: lead.mensaje,
+    gclid: lead.gclid || "",
+    utm_source: lead.utm_source || "",
+    utm_medium: lead.utm_medium || "",
+    utm_campaign: lead.utm_campaign || "",
+    Asunto: lead.asunto || "",
+    Origen: "solylluvia.net (formulario proprio)",
+  };
+
+  // O secret vai no header e nao na query string, para nao ficar em logs de
+  // acesso nem em referers. O receive-webhook le o header primeiro.
+  const resposta = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-webhook-secret": secret,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!resposta.ok) {
+    const detalhe = await resposta.text();
+    throw new Error(`receive-webhook respondeu ${resposta.status}: ${detalhe}`);
+  }
+
+  return resposta.json().catch(() => ({}));
+}
+
 exports.handler = async (event, context) => {
   // CORS restrito: reflete o Origin recebido quando está na allowlist.
   // Não se pode usar "*" quando se quer restringir a origens específicas.
@@ -45,7 +97,19 @@ exports.handler = async (event, context) => {
   try {
     // Parse do corpo da requisição
     const body = JSON.parse(event.body);
-    const { nombre, email, telefono, ciudad, asunto, mensaje } = body;
+    const {
+      nombre,
+      email,
+      telefono,
+      ciudad,
+      asunto,
+      mensaje,
+      // Atribuicao: opcionais, nao entram na validacao.
+      gclid,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+    } = body;
 
     // Validação básica
     if (!nombre || !email || !ciudad || !mensaje) {
@@ -85,8 +149,37 @@ exports.handler = async (event, context) => {
       `,
     };
 
-    // Enviar o e-mail
-    await transporter.sendMail(mailOptions);
+    // Email e pipeline seguem em paralelo: a falha de um nao pode derrubar o
+    // outro, por isso allSettled em vez de all.
+    const [envioEmail, envioPipeline] = await Promise.allSettled([
+      transporter.sendMail(mailOptions),
+      entregarLeadAoPipeline({
+        nombre,
+        email,
+        telefono,
+        ciudad,
+        asunto,
+        mensaje,
+        gclid,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+      }),
+    ]);
+
+    // Falha do pipeline NAO derruba a resposta ao visitante: o email ja seguiu
+    // e o lead chegou ao cliente. Fica registado nos logs da funcao.
+    if (envioPipeline.status === "rejected") {
+      console.error(
+        "Falha ao entregar o lead ao receive-webhook:",
+        envioPipeline.reason
+      );
+    }
+
+    // Falha do email mantem o comportamento antigo: 500 para o visitante.
+    if (envioEmail.status === "rejected") {
+      throw envioEmail.reason;
+    }
 
     return {
       statusCode: 200,
