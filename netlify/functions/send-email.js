@@ -1,12 +1,28 @@
 import nodemailer from "nodemailer";
 
+// Origens autorizadas a chamar esta função a partir do browser.
+// solylluvia.net envia uma cópia paralela do formulário nativo do Duda.
+const ALLOWED_ORIGINS = [
+  "https://www.solylluvia.net",
+  "https://solylluvia.net",
+  "https://solylluviaeu.netlify.app",
+];
+
 exports.handler = async (event, context) => {
-  // Configurar CORS
+  // CORS restrito: reflete o Origin recebido quando está na allowlist.
+  // Não se pode usar "*" quando se quer restringir a origens específicas.
+  const requestOrigin =
+    (event.headers && (event.headers.origin || event.headers.Origin)) || "";
+
   const headers = {
-    "Access-Control-Allow-Origin": "*", // Em produção, altere para o domínio do seu frontend
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
+    Vary: "Origin",
   };
+
+  if (ALLOWED_ORIGINS.includes(requestOrigin)) {
+    headers["Access-Control-Allow-Origin"] = requestOrigin;
+  }
 
   // Responder a requisições OPTIONS (preflight)
   if (event.httpMethod === "OPTIONS") {
