@@ -191,13 +191,19 @@ exports.handler = async (event, context) => {
       throw envioEmail.reason;
     }
 
+    // A pagina de obrigado vive noutro dominio, por isso o cookie de clique do
+    // solylluvia.net nao a acompanha. O gclid segue no URL para o gtag de la
+    // conseguir atribuir a conversao ao clique que a originou.
+    const paginaObrigado = new URL("https://solylluviagraias.netlify.app/");
+    if (gclid) paginaObrigado.searchParams.set("gclid", gclid);
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         success: true,
         message: "E-mail enviado com sucesso!",
-        redirect: "https://solylluviagraias.netlify.app/"
+        redirect: paginaObrigado.toString()
       }),
     };
 
