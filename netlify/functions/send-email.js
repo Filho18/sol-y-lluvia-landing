@@ -175,8 +175,14 @@ exports.handler = async (event, context) => {
     const telWhats = telParaWhatsapp(telefono);
 
     const assuntoResposta = encodeURIComponent("Sol y Lluvia — su solicitud de presupuesto");
+    // Assinatura fixa do Jefferson, no fim de cada resposta. Fica depois de
+    // linhas em branco, para ele escrever por cima dela. Emojis em escape
+    // unicode para nao dependerem da codificacao do ficheiro.
+    const assinatura =
+      "Un saludo,\nJefferson Dias\n\u{1F4DE} 618 145 914\n\u{1F310} solylluvia.net";
+
     const corpoResposta = encodeURIComponent(
-      `Hola ${nombre},\n\nGracias por ponerse en contacto con Sol y Lluvia.\n\n`
+      `Hola ${nombre},\n\nGracias por ponerse en contacto con Sol y Lluvia.\n\n\n\n${assinatura}\n`
     );
     const linkResponder = `mailto:${emailSeguro}?subject=${assuntoResposta}&body=${corpoResposta}`;
 
