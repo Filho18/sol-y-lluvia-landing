@@ -8,6 +8,25 @@ const ALLOWED_ORIGINS = [
   "https://solylluviaeu.netlify.app",
 ];
 
+// Escapa texto do visitante antes de o pôr no HTML do email. Sem isto, quem
+// submete o formulário controla marcação dentro da caixa de entrada do cliente.
+function escHtml(valor) {
+  return String(valor == null ? "" : valor)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Normaliza o telefone para wa.me: só dígitos, sem "+". Números de 9 dígitos
+// sem indicativo assumem Espanha (34), que é onde o cliente opera.
+function telParaWhatsapp(valor) {
+  const limpo = String(valor || "").replace(/\D/g, "");
+  if (!limpo) return "";
+  return limpo.length <= 9 ? "34" + limpo : limpo;
+}
+
 // Entrega o lead ao pipeline do Supabase (receive-webhook), que persiste na
 // tabela leads, faz hash do PII e escreve a linha de conversao offline no
 // Google Sheet. Chamada servidor-a-servidor: o secret nunca chega ao browser.
@@ -137,23 +156,73 @@ exports.handler = async (event, context) => {
       },
     });
 
-    // Configurar o e-mail
+    // ---------------------------------------------------------------------
+    // Notificacao do lead.
+    //
+    // Assunto e corpo estao em castelhano e sem linguagem interna DE PROPOSITO:
+    // o Gmail cita a mensagem inteira quando o cliente carrega em Responder, e
+    // essa citacao chega ao lead. Tudo o que esta aqui tem de poder ser lido
+    // pelo lead sem constrangimento.
+    //
+    // O botao "Responder" e um mailto: e nao um Reply. O From desta mensagem e
+    // a propria caixa onde o cliente a le, por isso o Gmail trata-a como
+    // "enviada por mim" e ignora o Reply-To — carregar em Responder devolvia a
+    // mensagem a ele mesmo. O mailto: abre uma mensagem NOVA para o lead, sem
+    // citacao nenhuma, e resolve as duas queixas de uma vez.
+    // ---------------------------------------------------------------------
+    const nomeSeguro = escHtml(nombre);
+    const emailSeguro = escHtml(email);
+    const telWhats = telParaWhatsapp(telefono);
+
+    const assuntoResposta = encodeURIComponent("Sol y Lluvia — su solicitud de presupuesto");
+    const corpoResposta = encodeURIComponent(
+      `Hola ${nombre},\n\nGracias por ponerse en contacto con Sol y Lluvia.\n\n`
+    );
+    const linkResponder = `mailto:${emailSeguro}?subject=${assuntoResposta}&body=${corpoResposta}`;
+
+    const linha = (rotulo, valor) =>
+      `<tr>
+         <td style="padding:6px 16px 6px 0;color:#6f6a5e;font-size:13px;white-space:nowrap;vertical-align:top">${rotulo}</td>
+         <td style="padding:6px 0;color:#14181a;font-size:15px">${valor}</td>
+       </tr>`;
+
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO || process.env.EMAIL_USER, // E-mail de destino (variável de ambiente)
-      replyTo: email, // <-- NOVA LINHA AQUI
-      subject: `Nova mensagem de ${nombre} (${ciudad}) - ${asunto || "Sol y Lluvia Landing"}`,
+      from: `"Sol y Lluvia — Web" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+      replyTo: email,
+      subject: `Solicitud de presupuesto — ${nombre} (${ciudad})`,
       html: `
-        <h2>Mais um Futuro Cliente Jefferson. BOA VENDA</h2>
-        <p><strong>Nome:</strong> ${nombre}</p>
-        <p><strong>E-mail:</strong> ${email}</p>
-        <p><strong>Cidade:</strong> ${ciudad}</p>
-        ${telefono ? `<p><strong>Telefone:</strong> ${telefono}</p>` : ""}
-        ${asunto ? `<p><strong>Assunto:</strong> ${asunto}</p>` : ""}
-        <p><strong>Mensagem:</strong></p>
-        <p>${mensaje.replace(/\n/g, "<br>")}</p>
-        <hr>
-        <p><em>Mensagem enviada através do formulário de contato do site.</em></p>
+        <div style="font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;max-width:560px;color:#14181a;line-height:1.5">
+          <p style="margin:0 0 20px;font-size:16px">
+            <strong>${nomeSeguro}</strong> ha solicitado información a través de la web.
+          </p>
+
+          <p style="margin:0 0 24px">
+            <a href="${linkResponder}"
+               style="display:inline-block;padding:12px 24px;background:#14181a;color:#ffffff;text-decoration:none;border-radius:4px;font-size:15px">
+              Responder a ${nomeSeguro}
+            </a>
+            ${telWhats
+              ? `<a href="https://wa.me/${telWhats}"
+                    style="display:inline-block;margin-left:10px;padding:12px 24px;background:#ffffff;color:#14181a;border:1px solid #e4e1d9;text-decoration:none;border-radius:4px;font-size:15px">
+                   WhatsApp
+                 </a>`
+              : ""}
+          </p>
+
+          <table style="border-collapse:collapse;width:100%;border-top:1px solid #e4e1d9">
+            ${linha("Nombre", nomeSeguro)}
+            ${linha("Email", `<a href="mailto:${emailSeguro}" style="color:#14181a">${emailSeguro}</a>`)}
+            ${telefono ? linha("Teléfono", `<a href="tel:${escHtml(String(telefono).replace(/[^\d+]/g, ""))}" style="color:#14181a">${escHtml(telefono)}</a>`) : ""}
+            ${linha("Localidad", escHtml(ciudad))}
+            ${asunto ? linha("Asunto", escHtml(asunto)) : ""}
+            ${linha("Mensaje", escHtml(mensaje).replace(/\n/g, "<br>"))}
+          </table>
+
+          <p style="margin:24px 0 0;color:#6f6a5e;font-size:12px">
+            Enviado desde el formulario de contacto de solylluvia.net
+          </p>
+        </div>
       `,
     };
 
